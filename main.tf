@@ -7,7 +7,7 @@ resource "aws_lambda_function" "leader" {
   function_name = "${var.name}"
   description = "Elects a leader in an autoscaling upon receiving scaling events"
   runtime = "nodejs"
-  filename = "${path.module}/files/ElectASGLeader.zip"
+  filename = "${path.module}/files/exports.zip"
   source_code_hash = "${base64sha256(file("${path.module}/files/exports.zip"))}"
   handler = "exports.handler"
   role = "${aws_iam_role.lambda.arn}"
